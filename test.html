@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DBus Highlight.js Test</title>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="solarized_dark.css" rel="stylesheet">
+    <style>
+        pre{
+           margin:  0px;
+           padding: 0px;
+           background: none;
+           border: none;
+        }
+
+        .expandable{
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#input" data-toggle="tab">Input</a>
+                    </li>
+                    <li>
+                        <a href="#output" data-toggle="tab">Output</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="span12">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="input">
+                        <form>
+                            <textarea id="text-input" rows="20" style="width: 100%;"></textarea>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="output">
+                        <pre>
+                           <code id="highlight-output" class="language-flashlog">
+
+                           </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.0/highlight.min.js"></script>-->
+    <script src="highlight.js"></script>
+    <script type="text/javascript" src="dbus.highlight.js"></script>
+    <script type="text/javascript" src="flashlog.highlight.js"></script>
+    <script>
+        jQuery(function($){
+
+            var $textInput = $("#text-input"), $output = $("#highlight-output");
+
+            $textInput.change(function(e){
+               var code = $textInput.val();
+                $output.text(code);
+                hljs.initHighlighting();
+
+            });
+
+
+        });
+    </script>
+</body>
+</html>
